@@ -20,3 +20,17 @@ resource "aws_instance" "tf-instance" {
     }
 
 }
+
+resource "aws_instance" "example" {
+  ami = "ami-0bb84b8ffd87024d8"
+  key_name = "core"
+  instance_type = "t2.micro"
+  tags = {
+    Name = "tf-ec2-template"
+  }
+}
+
+import {
+  to = aws_instance.example
+  id = "i-0c773520f2c7030eb"
+}
